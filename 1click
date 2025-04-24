@@ -1,0 +1,2838 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+>
+<style>
+  .inline-error {
+    display: flex;
+    align-items: center;
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: 5px;
+    gap: 5px; 
+}
+.uppercase{
+  text-transform:capitalize;
+}
+.inline-error::before {
+    content: "⚠";
+    font-size: 16px;
+}
+
+.inline-error-title {
+  font-size: 18px;
+}
+
+
+      .section-{{ section.id }}-padding {
+        padding-top: "{{ section.settings.padding_top | times: 0.75 | round: 0 }}px";
+        padding-bottom: "{{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px";
+      }
+
+      body{
+        background:#f1eeee !important;
+      }
+  @media (max-width: 749px) {
+  .row.align-items-start > div {
+    width: 100% !important;
+    max-width: 100%;
+    display: block;
+  }
+
+  .radio-button-group > div {
+    flex-wrap: wrap;
+  }
+
+  .radio-button {
+    flex: 1 1 calc(50% - 10px); /* Adjusts to 2 per row on mobile */
+    min-width: 140px;
+  }
+}
+
+      h3 {
+        color:#127bba;
+      }
+      fieldset {
+        margin-bottom: 20px;
+      }
+      .row.align-items-start {
+        padding: 0px 0px 10px 0px;
+      }
+      @media screen and (min-width: 750px) {
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top }}px;
+          padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+      }
+      .card-header-custom {
+          background-color: #f8f9fa; /* Or your desired color */
+          padding: 4px 0px 0px 5px;
+          border-bottom: 1px solid #ddd;
+        }
+
+    /* Container for radio buttons */
+    .radio-button-group {
+        display: flex;
+        flex-direction: row; /* Arrange buttons horizontally */
+        gap: 10px; /* Space between buttons */
+        flex-wrap: wrap; /* Wrap buttons if needed */
+    }
+
+    /* Styling for each radio button container */
+    .radio-button {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        transition: "border-color 0.3s, background-color 0.3s";
+    }
+
+    /* Hide the actual radio button */
+    .radio-button input[type="radio"] {
+        display: none;
+    }
+
+    /* Styling for the visible custom radio button element */
+    .radio-button-custom {
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        padding: 8px 12px;
+        transition: "border-color 0.3s, background-color 0.3s";
+    }
+
+    /* Change styling of the custom button when the radio input is checked */
+    .radio-button input[type="radio"]:checked + .radio-button-custom {
+      border-color: #007bff;
+      background-color: #127bba;
+      color: white;
+    }
+
+    /* Change border color on hover for the button container */
+    .radio-button:hover {
+        border-color: #007bff;
+    }
+
+    .image-icon {
+        position: absolute;
+        top: 0;
+    }
+    .span-text {
+        padding: 2px 0px 2px 31px;
+    }
+    .main-div{
+      padding:20px;
+    }
+    .service-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .service-box {
+      border: 4px solid #ccc;
+      padding: 10px;
+      display: flex;
+      border-radius:10px;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 210px;
+      max-width: 270px;
+      height: 70px;
+    }
+    .service-box-main {
+      border: 2px solid #ccc;
+      padding: 10px;
+      align-items: center;
+      height: 110px;
+      padding-top: 5px;
+      border-radius: 10px;
+      width: 162px;
+
+    }
+
+    .service-box.checked {
+      border-color: #127bba;
+      background: #127bba;
+      border-radius: 10px;
+    }
+
+    .service-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .service-label span {
+      font-size: 16px;
+      font-weight: bold;
+      color: #666;
+    }
+
+    .service-box.checked .service-label span {
+      color: white;
+  }
+
+    .service-box-main.checked {
+      border: 4px solid  #127bba;
+    }
+
+    input.checkbox {
+        display: none;
+    }
+    .service-label img {
+      width: 82px;
+      height: 58px;
+      object-fit: contain;
+    }
+    .button-container{
+      text-align:right;
+      margin-top: 20px;
+    }
+    .button-container button{
+      font-size: 21px;
+      padding: 10px;
+    }
+    #pcb_calculator input{
+      border:1px solid black !important;
+    }
+    #pcb_calculator select{
+      border:1px solid black !important;
+    }
+    #loginModal{
+      background:#100f0fad;
+    }
+    .messagebar{
+      margin-top:5px;
+      padding:10px;
+      font-size:14px;
+    }
+    .sticky-div {
+      position: sticky;
+      top: 0;
+      padding: 15px;
+      z-index: 100;
+  }
+    .error{
+      padding:5px;
+      color:#d9534f;
+      margin-left:7px;
+    }
+    .grey-out{
+      position: absolute;top: 0;left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      opacity: 0.7;
+    }
+</style>
+
+<div class="page-width page-width--wide section-{{ section.id }}-padding">
+  <output id="output"></output>
+
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div class="card messagebar sticky-div" id="messagebar"></div>
+
+    <form id="pcb_calculator" name="pcb_calculator_name">
+      <input type="hidden" name="customerId" value="{{customer.id }}">
+
+      <div class="card main-div mt-4" id="container-form">
+        <div class="card p-3 mb-5 shadow-sm" style="margin-bottom: 5px;">
+          <div class="form-group row">
+            <label for="inputSubject" class="col-sm-2 col-form-label font-weight-bold"><strong>Subject</strong></label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                name="subject"
+                id="inputSubject"
+                placeholder="Title"
+                max="30"
+                value=""
+                required
+              >
+              <small>Keep the subject under 30 characters</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card section-1">
+          <div class="card-header">
+            <h3>Item Selection</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container service-options">
+                <div class="row">
+                  <div class="col-md">
+                    <div class="service-box service-child checked">
+                      <label class="service-label" for="serviceM">
+                        <input type="checkbox" name="kiban_type" checked class="checkbox" value="1">
+                        <input type="checkbox" name="serviceM" id="serviceM" checked value="1" class="checkbox">
+                        <span>Rigid Circuit Board Manufacturing</span>
+                        <img
+                          src="https://www.p-ban.com//kiban/_next/static/images/manufacture-6b82e488a6cf372d46345803e0815c15.png"
+                          alt="Circuit Board Manufacturing"
+                        >
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="service-box service-child" style="display:none;">
+                      <label class="service-label">
+                        <input type="checkbox" name="serviceG" id="serviceG" value="1" class="checkbox">
+                        <span>Component Mounting</span>
+                        <img
+                          src="https://www.p-ban.com/kiban/_next/static/images/mount-52ebd0a2ee2b438266675b77ee1a71c0.png"
+                          alt="Component Mounting"
+                          width="100%"
+                        >
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="service-box" style="border:0px;">
+                      <!--
+                        <div style="display:none;">
+                          <label class="service-label">
+                            <input type="checkbox" name="serviceD" id="serviceD" value="1" class="checkbox">
+                            <span>Board Design</span>
+                            <img
+                              src="https://www.p-ban.com//kiban/_next/static/images/design-933f97bc50971607d9763b03e76ca321.png"
+                              alt="Board Design"
+                            >
+                          </label>
+                        </div>
+                      -->
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    <div class="service-box" style="border:0px;">
+                      <label class="service-label"> </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="error" style="display:none">No service has been selected</p>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="card mt-2 section-2">
+          <div class="card-header">
+            <h3>Enter Basic Information</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Number of layers</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/layer-eee9b6351692aac3742a24962e92e711.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="1" id="layer_single_sided">
+                        <span class="radio-button-custom" for="layer_single_sided">Single-sided</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="2" id="layer_2_layers">
+                        <span class="radio-button-custom" for="layer_2_layers">2 layers</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="4" id="layer_4_layers">
+                        <span class="radio-button-custom" for="layer_4_layers">4 layers</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="6" id="layer_6_layers">
+                        <span class="radio-button-custom" for="layer_6_layers">6 layers</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="8" id="layer_8_layers">
+                        <span class="radio-button-custom" for="layer_8_layers">8 layers</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="10" id="layer_10_layers">
+                        <span class="radio-button-custom" for="layer_10_layers">10 layers</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="layer" value="12" id="layer_12_layers">
+                        <span class="radio-button-custom" for="layer_12_layers">12 layers</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start" style="display: none;" id="patternSide-container">
+                  <div class="col-md-2">Pattern Surface</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="pattern_side" value="0">
+                        <span class="radio-button-custom" for="pattern_side">L2 plane viewed from L1 plane</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="pattern_side" value="1">
+                        <span class="radio-button-custom" for="pattern_side">L1 surface from L1 surface</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="pattern_side" value="2">
+                        <span class="radio-button-custom" for="pattern_side">L1 plane viewed from L2 plane</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="pattern_side" value="3">
+                        <span class="radio-button-custom" for="pattern_side">L2 view of L2 plane</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div id="surfaceFinishing_error" class="inline-error"></div>
+                </div>
+                <div class="row align-items-start">
+                  <div class="col-md-2">External dimensions</div>
+                  
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-md-1">
+                        <img
+                          src="https://www.p-ban.com/kiban/_next/static/images/size-e9097b5eeafdefe5f2469a8687e55429.png"
+                          alt="Pattern Image"
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <div class="input-group">
+                          <span class="input-group-text">X=</span>
+                          <input type="number" value="" min="1" name="size_x" class="form-control" required>
+                          <span class="input-group-text">mm</span>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <div class="input-group">
+                          <span class="input-group-text">Y=</span>
+                          <input type="number" value="" min="1" name="size_y" class="form-control" required>
+                          <span class="input-group-text">mm</span>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div id="size_x_error" class="inline-error"></div>
+                          <div id="size_y_error" class="inline-error"></div>
+                        </div>
+                      </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="card mt-2 section-2 serviceM">
+          <div class="card-header">
+            <h3>Manufacturing</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="container text-left serviceM">
+                  <div class="row align-items-start">
+                    <div class="col-md-2">Manufacturing Quantity</div>
+                    <div class="col-md-1">
+                      <img src="https://www.p-ban.com/kiban/_next/static/images/cnt-7e66cf87af1815222f4ab017293ec9e4.png">
+                    </div>
+
+                    <div class="col-md-2">
+                      <div class="input-group">
+                        <input type="number" name="cnt" min="1" value="1" class="form-control">
+                        <span class="input-group-text">Sheets</span>
+                        <input type="hidden" name="crs_n" value="1" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="card mt-2 section-2 serviceG">
+          <div class="card-header">
+            <h3>Implementation</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Number of mountings</div>
+                  <div class="col-md-1">
+                    <img src="https://www.p-ban.com/kiban/_next/static/images/sheetCnt-cc5e8b808c6dadea402bea9888f9a2c7.png">
+                  </div>
+                  <div class="col-md-2">
+                    <div class="input-group">
+                      <input
+                        type="number"
+                        aria-label=""
+                        value=""
+                        min="1"
+                        name="mnt_sheet_cnt"
+                        id="mnt_sheet_cnt"
+                        class="form-control"
+                      >
+                      <span class="input-group-text" for="mnt_sheet_cnt">Pieces</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Solder Type</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="solder_type" type="radio" value="1" id="eutecticSolder" checked>
+                        <span class="radio-button-custom" for="eutecticSolder">Eutectic solder</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="solder_type" type="radio" value="2" id="leadFreeSolder">
+                        <span class="radio-button-custom" for="leadFreeSolder">Lead-free solder</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Surface Mount Components</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/pieceCnt-a0de9eaa276a171f33241e767e4390e7.png"
+                      alt="Surface Mount Components Image"
+                      loading="lazy"
+                    >
+                  </div>
+                  <div class="col">
+                    <div>
+                      <label>Surface mount components (general SMD)</label>
+                      <div class="col-md-2">
+                        <div class="input-group">
+                          <input type="number" min="0" value="" name="smd_cnt" id="smd_cnt" class="form-control">
+                          <span class="input-group-text" for="smd_cnt">Points/sheet</span>
+                        </div>
+                      </div>
+                      <label
+                        >Components with terminals hidden underneath the body (BGA/CSP/LGA/QFN/components with exposed
+                        pads)</label
+                      >
+                      <div class="col-md-2">
+                        <div class="input-group">
+                          <input type="number" min="0" value="" name="bgacsp_cnt" id="bgacsp_cnt" class="form-control">
+                          <span class="input-group-text" for="bgacsp_cnt">Points/sheet</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <label>Mounting surface</label>
+                    <div class="radio-button-group ">
+                      <label class="radio-button">
+                        <input name="smd_mnt_side" type="radio" value="10">
+                        <span class="radio-button-custom">Parts surface</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="smd_mnt_side" type="radio" value="01">
+                        <span class="radio-button-custom">Solder surface</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="smd_mnt_side" type="radio" value="11">
+                        <span class="radio-button-custom">Double-sided</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Insert Parts</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/dipPartCnt-16f42c0071fb896c9b97f9b6392b2da7.png"
+                      alt="Insert Parts Image"
+                      loading="lazy"
+                    >
+                  </div>
+                  <div class="col">
+                    <div>
+                      <label>Insertion parts (DIP)</label>
+                      <div class="col-md-2">
+                        <div class="input-group">
+                          <input type="number" min="0" value="" name="dip_cnt" id="dip_cnt" class="form-control">
+                          <span class="input-group-text" for="dip_cnt">Points/sheet</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="dip_mnt_side" type="radio" value="10">
+                        <span class="radio-button-custom">Parts surface</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="dip_mnt_side" type="radio" value="01">
+                        <span class="radio-button-custom">Solder surface</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="dip_mnt_side" type="radio" value="11">
+                        <span class="radio-button-custom">Double-sided</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">How to implement</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="mnt_method" type="radio" value="0">
+                        <span class="radio-button-custom">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/reflow-b61601aa3c2d3b1f5a16d5c326485978.png"
+                            loading="lazy"
+                          >
+                          Reflow mounting
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="mnt_method" type="radio" value="1">
+                        <span class="radio-button-custom">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/manual-fb06bc4edfdf3784fc47a187496f10e1.png"
+                            loading="lazy"
+                          >
+                          Manual implementation
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Mount data provided</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <!-- mount_inspection_certificate -->
+                      <label class="radio-button">
+                        <input name="provisionOfMountData" type="radio" value="1">
+                        <span class="radio-button-custom">Yes</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="provisionOfMountData" type="radio" value="0">
+                        <span class="radio-button-custom">None</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Metal Mask Details</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="metal_mask_dtl" type="radio" value="2" id="maskGerberData">
+                        <span class="radio-button-custom" for="maskGerberData"
+                          >Manufactured from Gerber data for masks</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input name="metal_mask_dtl" type="radio" value="3" id="maskNoGerberData">
+                        <span class="radio-button-custom" for="maskNoGerberData"
+                          >There is no Gerber data for the mask, so there is no Gerber data for the substrate. Complete
+                          set Manufactured from</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input name="metal_mask_dtl" type="radio" value="1" id="maskPaidByCustomer" checked>
+                        <span class="radio-button-custom" for="maskPaidByCustomer">Paid by customer</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Free parts provided by P-board.com</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="free_materials_flg" type="radio" value="1">
+                        <span class="radio-button-custom">Yes</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="free_materials_flg" type="radio" value="0">
+                        <span class="radio-button-custom">None</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Customer-supplied parts</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input name="user_prov_parts_flg" type="radio" value="1">
+                        <span class="radio-button-custom">Yes</span>
+                      </label>
+                      <label class="radio-button">
+                        <input name="user_prov_parts_flg" type="radio" value="0">
+                        <span class="radio-button-custom">None</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Expected arrival date of parts</div>
+                  <div class="col-md-1"></div>
+                  <div class="col-sm-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="materials_arrival_date"
+                      id="materials_arrival_date"
+                      placeholder="Date"
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!--
+          <div class="card mt-2 section-2 serviceD" >
+            <div class="card-header">
+              <h3>Design</h3>
+            </div>
+            <div class="card-body">
+              <fieldset>
+                <div class="container text-left">
+                  <div class="row align-items-start serviceD">
+                    <div class="col-md-2">Number of pins</div>
+                    <div class="col-md-1"></div>
+                      <div class="col-md-2">
+                      <div class="input-group">
+
+                        <input type="number" aria-label="" value="" name="pin_cnt" class="form-control">
+                        <span class="input-group-text">pin</span>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="row align-items-start serviceD" id="patternSide-container">
+                    <div class="col-md-2">CAD Selection</div>
+                    <div class="col-md-1"></div>
+                    <div class="col ">
+                      <div class="radio-button-group">
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="0" id="radio_no_cad" checked>
+                            <span class="radio-button-custom"  for="radio_no_cad" >No CAD specification</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="8" id="radio_altium">
+                            <span class="radio-button-custom"  for="radio_altium" >Altium</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="2" id="radio_cadlusion">
+                            <span class="radio-button-custom"  for="radio_cadlusion">CADLUS ONE (editable in CADLUS X)</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="4" id="radio_cr5000_bd">
+                            <span class="radio-button-custom"  for="radio_cr5000_bd">CR5000-BD</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="1" id="radio_cr5000_pws">
+                            <span class="radio-button-custom"  for="radio_cr5000_pws">CR5000-PWS</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="10" id="radio_kicad">
+                            <span class="radio-button-custom"  for="radio_kicad">KiCad</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="11" id="radio_orcad">
+                            <span class="radio-button-custom"  for="radio_orcad">OrCAD</span>
+                          </label>
+                          <label class="radio-button">
+                            <input type="radio" name="plan_cad_data_kbn" value="6" id="radio_quadcept">
+                            <span class="radio-button-custom"  for="radio_quadcept">Quadcept</span>
+                          </label>
+                    </div>
+                  </div>
+
+
+
+                </div>
+                 <div class="row align-items-start serviceD">
+                    <div class="col-md-2">Circuit diagram supply format</div>
+                    <div class="col-md-1"></div>
+                      <div class="col">
+                      <div class="radio-button-group">
+                              <label class="radio-button">
+                                <input type="radio" name="fileKbn" value="1" id="circuit_ciagram_netlist" checked>
+                                <span class="radio-button-custom" for="circuit_ciagram_netlist">Circuit diagram + netlist</span>
+                              </label>
+                              <label class="radio-button">
+                                <input type="radio" name="fileKbn" value="2" id="circuit_ciagram">
+                                <span class="radio-button-custom" for="circuit_ciagram">Circuit Diagram</span>
+                              </label>
+                          </div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        -->
+
+        <div class="card mt-2 section-3 serviceM">
+          <div class="card-header">
+            <h3>Enter Detailed Settings (Optional)</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Board Material</div>
+                  <div class="col-md-1">
+                    <img src="https://www.p-ban.com/kiban/_next/static/images/board-92c2ca835ef86e326e2c756248f2a061.png">
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="0" id="board_0">
+                        <span class="radio-button-custom">FR-4</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="1" id="board_1">
+                        <span class="radio-button-custom">High Tg material (Tg180 FR-4)</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="2" id="board_2">
+                        <span class="radio-button-custom">CEM-3</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="3" id="board_3">
+                        <span class="radio-button-custom">Halogen-free material (FR-4)</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="4" id="board_4">
+                        <span class="radio-button-custom">FR-1</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="5" id="board_5">
+                        <span class="radio-button-custom">Panasonic material (equivalent to R1705 FR-4)</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="6" id="board_6">
+                        <span class="radio-button-custom">Tracking-resistant material (CTI600 FR-4)</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="7" id="board_7">
+                        <span class="radio-button-custom">Rogers material (4350B)</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="board" value="8" id="board_8">
+                        <span class="radio-button-custom">Panasonic material (MEGTRON6)</span>
+                      </label>
+                    </div>
+                    <div id="board_error" class="inline-error"></div>
+                  </div>
+                </div>
+                
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Plate Thickness</div>
+                  <div class="col-md-1">
+                    <img src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img01A.png?v=1742999689">
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <div style="display:flex;gap:10px;">
+                        <label class="radio-button board_thickness_0.15">
+                          <input type="radio" name="board_thickness" value="0.15" id="board_thickness_0.15">
+                          <span class="radio-button-custom">0.15mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_0.2">
+                          <input type="radio" name="board_thickness" value="0.2" id="board_thickness_0.2">
+                          <span class="radio-button-custom">0.2mm</span>
+                        </label>
+
+                        <label class="radio-button rogers-only board_thickness_0.25" style="display:none;">
+                          <input type="radio" name="board_thickness" value="0.25" id="board_thickness_0.25">
+                          <span class="radio-button-custom">0.25mm (Rogers material only)</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_0.3">
+                          <input type="radio" name="board_thickness" value="0.3" id="board_thickness_0.3">
+                          <span class="radio-button-custom">0.3mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_0.4">
+                          <input type="radio" name="board_thickness" value="0.4" id="board_thickness_0.4">
+                          <span class="radio-button-custom">0.4mm</span>
+                        </label>
+
+                        <label class="radio-button rogers-only board_thickness_0.5" style="display:none;">
+                          <input type="radio" name="board_thickness" value="0.5" id="board_thickness_0.5">
+                          <span class="radio-button-custom">0.5mm (Rogers material only)</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_0.6">
+                          <input type="radio" name="board_thickness" value="0.6" id="board_thickness_0.6">
+                          <span class="radio-button-custom">0.6mm</span>
+                        </label>
+                      </div>
+                      <div style="display:flex;gap:10px;">
+                        <label class="radio-button rogers-only board_thickness_0.76" style="display:none;">
+                          <input type="radio" name="board_thickness" value="0.76" id="board_thickness_0.76">
+                          <span class="radio-button-custom">0.76mm (Rogers material only)</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_0.8">
+                          <input type="radio" name="board_thickness" value="0.8" id="board_thickness_0.8">
+                          <span class="radio-button-custom">0.8mm</span>
+                        </label>
+
+                        <label class="radio-button cem-only board_thickness_1.0">
+                          <input type="radio" name="board_thickness" value="1.0" id="board_thickness_1.0">
+                          <span class="radio-button-custom">1.0mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_1.2">
+                          <input type="radio" name="board_thickness" value="1.2" id="board_thickness_1.2">
+                          <span class="radio-button-custom">1.2mm</span>
+                        </label>
+
+                        <label class="radio-button cem-only">
+                          <input type="radio" name="board_thickness" value="1.6" id="board_thickness_1.6">
+                          <span class="radio-button-custom">1.6mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_1.8">
+                          <input type="radio" name="board_thickness" value="1.8" id="board_thickness_1.8">
+                          <span class="radio-button-custom">1.8mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_2.0">
+                          <input type="radio" name="board_thickness" value="2.0" id="board_thickness_2.0">
+                          <span class="radio-button-custom">2.0mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_2.4">
+                          <input type="radio" name="board_thickness" value="2.4" id="board_thickness_2.4">
+                          <span class="radio-button-custom">2.4mm</span>
+                        </label>
+
+                        <label class="radio-button board_thickness_3.0">
+                          <input type="radio" name="board_thickness" value="3.0" id="board_thickness_3.0">
+                          <span class="radio-button-custom">3.0mm</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div id="board_thickness_error" class="inline-error"></div>
+                  </div>
+                </div>
+                
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Copper foil thickness</div>
+                  <div class="col-md-1">
+                    <img src="https://www.p-ban.com/kiban/_next/static/images/copperThickness-ef390619810cceb78b7dc8488bf3d395.png">
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="100" id="copper_thickness_100">
+                        <span class="radio-button-custom">35μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="101" id="copper_thickness_101" checked>
+                        <span class="radio-button-custom">18μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="102" id="copper_thickness_102">
+                        <span class="radio-button-custom">70μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="103" id="copper_thickness_103">
+                        <span class="radio-button-custom">105μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="104" id="copper_thickness_104">
+                        <span class="radio-button-custom">140μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="105" id="copper_thickness_105">
+                        <span class="radio-button-custom">175μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="200" id="copper_thickness_200">
+                        <span class="radio-button-custom">Inner layer 35μm, outer layer 18μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="201" id="copper_thickness_201">
+                        <span class="radio-button-custom">Inner layer 35μm, outer layer 35μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="202" id="copper_thickness_202">
+                        <span class="radio-button-custom">Inner layer 35μm, outer layer 70μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="203" id="copper_thickness_203">
+                        <span class="radio-button-custom">Inner layer 70μm, outer layer 70μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="204" id="copper_thickness_204">
+                        <span class="radio-button-custom">Inner layer 18μm, outer layer 18μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="205" id="copper_thickness_205">
+                        <span class="radio-button-custom">Inner layer 18μm, outer layer 35μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="206" id="copper_thickness_206">
+                        <span class="radio-button-custom">Inner layer 18μm, outer layer 70μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="207" id="copper_thickness_207">
+                        <span class="radio-button-custom">Inner layer 70μm, outer layer 18μm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="copper_thickness" value="208" id="copper_thickness_208">
+                        <span class="radio-button-custom">Inner layer 70μm, outer layer 35μm</span>
+                      </label>
+                    </div>
+                    <div id="copper_thickness_error" class="inline-error"></div>
+                  </div>
+                </div>
+               
+
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <!-- New -->
+
+        <div class="card mt-2 section-4 serviceM">
+          <div class="card-header">
+            <h3>Design Criteria</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Minimum pattern width/spacing</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img02.png?v=1742999689"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.075" id="radio0">
+                        <span class="radio-button-custom" for="radio0">0.075mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.1" id="radio1">
+                        <span class="radio-button-custom" for="radio1">0.1mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.127" id="radio2">
+                        <span class="radio-button-custom" for="radio2">0.127mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.15" id="radio3">
+                        <span class="radio-button-custom" for="radio3">0.15mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.2" id="radio4">
+                        <span class="radio-button-custom" for="radio4">0.2mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.25" id="radio5">
+                        <span class="radio-button-custom" for="radio5">0.25mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.3" id="radio6">
+                        <span class="radio-button-custom" for="radio6">0.3mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.35" id="radio7">
+                        <span class="radio-button-custom" for="radio7">0.35mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_ls" value="0.4" id="radio8">
+                        <span class="radio-button-custom" for="radio8">0.4mm</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Minimum via diameter/land diameter</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img03.png?v=1742999689"
+                      alt="Via Diameter Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="0" id="min_hole_land_0">
+                        <span class="radio-button-custom" for="min_hole_land_1">0.3/0.6mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="1" id="min_hole_land_1">
+                        <span class="radio-button-custom" for="min_hole_land_1">0.3/0.5mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="2" id="min_hole_land_2">
+                        <span class="radio-button-custom" for="min_hole_land_2">0.25/0.5mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="3" id="min_hole_land_3">
+                        <span class="radio-button-custom" for="min_hole_land_3">0.2/0.5mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="4" id="min_hole_land_4">
+                        <span class="radio-button-custom" for="min_hole_land_4">0.2/0.45mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="5" id="min_hole_land_5">
+                        <span class="radio-button-custom" for="min_hole_land_5">0.15/0.4mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="6" id="min_hole_land_6">
+                        <span class="radio-button-custom" for="min_hole_land_6">0.15/0.35mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="7" id="min_hole_land_7">
+                        <span class="radio-button-custom" for="min_hole_land_7">0.4/0.8mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="8" id="min_hole_land_8">
+                        <span class="radio-button-custom" for="min_hole_land_8">0.5/1.0mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="9" id="min_hole_land_9">
+                        <span class="radio-button-custom" for="min_hole_land_9">0.5/1.3mm</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="min_hole_land" value="10" id="min_hole_land_10">
+                        <span class="radio-button-custom" for="min_hole_land_10">0.5/1.5mm</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Characteristic Impedance Control</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img04.png?v=1742999689"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="impedance" value="0" checked>
+                        <span class="radio-button-custom">Not specified</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="impedance" value="1">
+                        <span class="radio-button-custom">Differential (2 types, down to 75 Ω)</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="impedance" value="2">
+                        <span class="radio-button-custom">Single-ended (2 types)</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="impedance" value="3">
+                        <span class="radio-button-custom"
+                          >Single-ended (1 type) + differential (1 type, min. 75 Ω)</span
+                        >
+                      </label>
+                    </div>
+                    <div id="impedance_error" class="inline-error"></div>
+                  </div>
+                  
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-5 serviceM">
+          <div class="card-header">
+            <h3>Resist Printing</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Resist surface</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="resist_print" value="1" id="resist_print_double_sided">
+                        <span class="radio-button-custom" for="resist_print_double_sided">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_matteBlack-7039568bfc66cb88bdf22802f77c53ce.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_matteBlack-f4ba82d3e7a7d1b65415eb10ccac9796.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">Apply to both sides</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_print" value="2" id="resist_print_same_surface">
+                        <span class="radio-button-custom" for="resist_print_same_surface">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_matteBlack-7039568bfc66cb88bdf22802f77c53ce.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_none-e1020353aed66572f23345b81fdb6347.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">Paint on L1 face</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_print" value="3" id="resist_print_pattern_opposite">
+                        <span class="radio-button-custom" for="resist_print_pattern_opposite">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_none-3c5e301d365c18fd1efa9e0c5c9fe254.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_matteBlack-f4ba82d3e7a7d1b65415eb10ccac9796.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">Apply to L2 surface</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_print" value="4" id="resist_print_l1_surface">
+                        <span class="radio-button-custom" for="resist_print_l1_surface">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_matteBlack-7039568bfc66cb88bdf22802f77c53ce.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_none-e1020353aed66572f23345b81fdb6347.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">Do not paint</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Resist Color</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="0" id="resist_color-green">
+                        <span class="radio-button-custom" for="color-green"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/green-f075c89051f3b5146e4222c0d1a7a46c.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Green</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="1" id="resist_color-red">
+                        <span class="radio-button-custom" for="color-red">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/red-7c69d30e9db88e0238e9f148d8dd737a.png"
+                            alt=""
+                            loading="lazy"
+
+                          >Red</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="2" id="resist_color-blue">
+                        <span class="radio-button-custom" for="color-blue">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/blue-9fb32017b50781d9726b6bd75540dd59.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Blue</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="3" id="resist_color-yellow">
+                        <span class="radio-button-custom" for="color-yellow"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/yellow-4185a4882dc6ca5a25fc641a0cd3df3a.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Yellow</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="4" id="resist_color-white">
+                        <span class="radio-button-custom" for="color-white"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/white-76796c7ec733d1769571d8a0889b413c.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          White</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="5" id="resist_color-black">
+                        <span class="radio-button-custom" for="color-black"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/black-3cde06aaade779b1cde495a734c8b2b4.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Black</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="6" id="resist_color-black-matte">
+                        <span class="radio-button-custom" for="color-black-matte"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/matteBlack-0fbf56f8c834a83da4ddd112b0eb861b.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Black (matte)</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="resist_color" value="7" id="resist_color-purple">
+                        <span class="radio-button-custom" for="color-purple"
+                          ><img
+                            src="https://www.p-ban.com/kiban/_next/static/images/purple-204f683bfdba1e3ee657da80c6168ca4.png"
+                            alt=""
+                            loading="lazy"
+
+                          >Purple</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-6 serviceM">
+          <div class="card-header">
+            <h3>Silkscreen Printing</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Silk surface</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="silk" value="2" id="silk_same_surface">
+                        <span class="radio-button-custom" for="silk_same_surface">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_matteBlack-7039568bfc66cb88bdf22802f77c53ce.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_none-e1020353aed66572f23345b81fdb6347.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_white-afc56f7d8e179d9280fcffbefb0ff04e.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">L1 surface</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk" value="3" id="silk_double_sided">
+                        <span class="radio-button-custom" for="silk_double_sided">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_matteBlack-7039568bfc66cb88bdf22802f77c53ce.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_matteBlack-f4ba82d3e7a7d1b65415eb10ccac9796.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_white-afc56f7d8e179d9280fcffbefb0ff04e.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_white-08290143eab74cd96eff6e4716e3b047.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">Double-sided</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk" value="4" id="silk_pattern_opposite">
+                        <span class="radio-button-custom" for="silk_pattern_opposite">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_none-3c5e301d365c18fd1efa9e0c5c9fe254.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_matteBlack-f4ba82d3e7a7d1b65415eb10ccac9796.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_white-08290143eab74cd96eff6e4716e3b047.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">L2 surface</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk" value="1" id="silk_none">
+                        <span class="radio-button-custom" for="silk_none">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/top_none-3c5e301d365c18fd1efa9e0c5c9fe254.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/bottom_none-e1020353aed66572f23345b81fdb6347.png"
+                            alt="None"
+                            class="image-icon"
+                          >
+                          <span class="span-text">None</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Silk Color</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="silk_color" value="0" id="silk_color-white">
+                        <span class="radio-button-custom" for="color-white">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/matteBlack-0fbf56f8c834a83da4ddd112b0eb861b.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/white-ee63d6235453116cc5bc53d7c10a791a.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <span class="span-text">White</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk_color" value="1" id="silk_color-black">
+                        <span class="radio-button-custom" for="color-black">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/matteBlack-0fbf56f8c834a83da4ddd112b0eb861b.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/black-075bebd6904ff447552bfbe0ddba323e.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <span class="span-text">Black</span>
+                        </span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk_color" value="2" id="silk_color-green">
+                        <span class="radio-button-custom" for="color-green">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/matteBlack-0fbf56f8c834a83da4ddd112b0eb861b.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/yellow-9c16918ab71a8e19e32df805ccd8932b.png"
+                            alt=""
+                            class="image-icon"
+                            loading="lazy"
+                          >
+                          <span class="span-text">Yellow</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Silk printing method</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="silk_print_method" value="0" id="color-white">
+                        <span class="radio-button-custom" for="color-white">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/entrust-4d75ad2c8fee7a8b23a607b059981fa5.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Leave it to us</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="silk_print_method" value="1" id="color-black">
+                        <span class="radio-button-custom" for="color-black">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/photolithography-9a9d3c8f88daf01b3c26b1f9d7c5be8a.png"
+                            alt=""
+                            loading="lazy"
+
+                          >Photographic method</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-7 serviceM">
+          <div class="card-header">
+            <h3>Finishing</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Surface Treatment</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="0" id="water-soluble-flux">
+                        <span class="radio-button-custom" for="water-soluble-flux">
+                          Water-soluble flux (lead-free + RoHS compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="1" id="solder-leveller-lead">
+                        <span class="radio-button-custom" for="solder-leveller-lead"> Solder leveller (lead) </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="2" id="solder-leveller-lead-free">
+                        <span class="radio-button-custom" for="solder-leveller-lead-free">
+                          Solder leveller (lead-free + RoHS compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="3" id="gold-flash">
+                        <span class="radio-button-custom" for="gold-flash">
+                          Electroless gold flash (lead-free + RoHS compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="4" id="terminals-gold-lead">
+                        <span class="radio-button-custom" for="terminals-gold-lead">
+                          Terminals only electrolytic gold plating + solder leveler (lead included)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="5" id="terminals-gold-flux">
+                        <span class="radio-button-custom" for="terminals-gold-flux">
+                          Terminals only are electrolytically gold plated + water-soluble flux (lead-free + RoHS
+                          compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="6" id="terminals-gold-lead-free">
+                        <span class="radio-button-custom" for="terminals-gold-lead-free">
+                          Electrolytic gold plating on terminals only + solder leveler (lead-free + RoHS compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="7" id="fully-gold-plating">
+                        <span class="radio-button-custom" for="fully-gold-plating">
+                          Fully electrolytic gold plating
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="8" id="gold-plating-wire-bonding">
+                        <span class="radio-button-custom" for="gold-plating-wire-bonding">
+                          Gold plating for wire bonding (RoHS compliant) Former: Soft gold plating
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="10" id="nickel-palladium-au-plating">
+                        <span class="radio-button-custom" for="nickel-palladium-au-plating">
+                          Electroless Nickel-Palladium-Au Plating for Wire Bonding (RoHS Compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="11" id="nickel-gold-plating">
+                        <span class="radio-button-custom" for="nickel-gold-plating">
+                          Electroless Nickel Gold Plating for Wire Bonding (RoHS Compliant)
+                        </span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="surface_finishing" value="9" id="none-copper-foil">
+                        <span class="radio-button-custom" for="none-copper-foil">
+                          None (copper foil only + RoHS compliant)
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Terminals only are electrolytically gold plated</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/hardGoldOnPCIEdgeTerminal-c99de862ed130779d993b17918ed79ca.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="hard_gold_on_pci_edge_terminal"
+                          value="0"
+                          id="hard_gold_on_pci_edge_terminal_0"
+                        >
+                        <span class="radio-button-custom" for="hard_gold_on_pci_edge_terminal_0"> No </span>
+                      </label>
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="hard_gold_on_pci_edge_terminal"
+                          value="1"
+                          id="hard_gold_on_pci_edge_terminal_1"
+                        >
+                        <span class="radio-button-custom" for="hard_gold_on_pci_edge_terminal_1"> Yes </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start">
+                  <div class="col-md-2">Chamfering of terminals</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img05.png?v=1742999689"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="chamfering_process" value="0" id="do-not">
+                        <span class="radio-button-custom" for="do-not">Do not</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="chamfering_process" value="1" id="no-angle-specified">
+                        <span class="radio-button-custom" for="no-angle-specified">No angle specified</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="chamfering_process" value="4" id="angle-20-depth-18">
+                        <span class="radio-button-custom" for="angle-20-depth-18">Angle: 20 degrees Depth: 1.8mm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="chamfering_process" value="3" id="angle-30-depth-1">
+                        <span class="radio-button-custom" for="angle-30-depth-1">Angle: 30 degrees Depth: 1.0mm</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="chamfering_process" value="2" id="angle-45-depth-05">
+                        <span class="radio-button-custom" for="angle-45-depth-05">Angle: 45 degrees Depth: 0.5mm</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div iv class="card mt-2 section-8 both">
+          <div class="card-header">
+            <h3>Imposition Information</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <!-- Router Cutting and Imposition -->
+                <div class="row align-items-start mb-3 serviceG">
+                  <div class="col-md-2">Number of Impositions</div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                    <select class="form-control" name="panelized_item_cnt">
+                      <option value="">-Please Select-</option>
+                      <option value="1">none</option>
+                      <option value="2">2-Sided</option>
+                      <option value="3">3-sided</option>
+                      <option value="4">4-sided</option>
+                      <option value="5">5-sided</option>
+                      <option value="6">6-sided</option>
+                      <option value="7">7 pages</option>
+                      <option value="8">8-panel</option>
+                      <option value="9">9 pages</option>
+                      <option value="10">10 pages</option>
+                      <option value="11">11 pages</option>
+                      <option value="12">12 pages</option>
+                      <option value="13">13 pages</option>
+                      <option value="14">14 pages</option>
+                      <option value="15">15 pages</option>
+                      <option value="16">16 pages</option>
+                      <option value="17">17 pages</option>
+                      <option value="18">18 pages</option>
+                      <option value="19">19 pages</option>
+                      <option value="20">20 pages</option>
+                      <option value="21">21 pages</option>
+                      <option value="22">22 pages</option>
+                      <option value="23">23 pages</option>
+                      <option value="24">24 pages</option>
+                      <option value="25">25 pages</option>
+                      <option value="26">26 pages</option>
+                      <option value="27">27 pages</option>
+                      <option value="28">28 pages</option>
+                      <option value="29">29 pages</option>
+                      <option value="30">30 pages</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <select class="form-control" name="panelizedItemKindCnt">
+                      <option value="">-Please Select-</option>
+                      <option value="1">Same species</option>
+                      <option value="2">2 types</option>
+                      <option value="3">3 types</option>
+                      <option value="4">4 types</option>
+                      <option value="5">5 types</option>
+                      <option value="6">6 types</option>
+                      <option value="7">7 types</option>
+                      <option value="8">8 types</option>
+                      <option value="9">9 types</option>
+                      <option value="10">10 types</option>
+                      <option value="11">11 species</option>
+                      <option value="12">12 species</option>
+                      <option value="13">13 species</option>
+                      <option value="14">14 species</option>
+                      <option value="15">15 species</option>
+                      <option value="16">16 types</option>
+                      <option value="17">17 species</option>
+                      <option value="18">18 species</option>
+                      <option value="19">19 species</option>
+                      <option value="20">20 species</option>
+                      <option value="21">21 species</option>
+                      <option value="22">22 species</option>
+                      <option value="23">23 species</option>
+                      <option value="24">24 species</option>
+                      <option value="25">25 species</option>
+                      <option value="26">26 species</option>
+                      <option value="27">27 species</option>
+                      <option value="28">28 species</option>
+                      <option value="29">29 species</option>
+                      <option value="30">30 species</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- V-Cut -->
+                <div class="row align-items-start mb-3b serviceM">
+                  <div class="col-md-2">V-Cut</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/vcutCnt-f2aa931f1b9d3ad1f41f0c5c625a1ed6.png"
+                      alt="V-Cut Pattern Image"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <div class="input-group">
+                      <input type="number" name="vcut_cnt" class="form-control" min="0" value="">
+                      <span class="input-group-text">Books</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Jump V-Cut -->
+                <div class="row align-items-start mb-3 serviceM">
+                  <div class="col-md-2">Jump V-Cut</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/jumpVcutCnt-1bc1b21c8609d67d21f9ab21fef17e8f.png"
+                      alt="Jump V-Cut Pattern Image"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <div class="input-group">
+                      <input type="number" name="jumpvcut_cnt" class="form-control" min="0" value="">
+                      <span class="input-group-text">Books</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Router Cutting and Imposition -->
+                <div class="row align-items-start mb-3 serviceM">
+                  <div class="col-md-2">Router Cutting and Imposition</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/routerCut-6396e444f6eac9c95b07bfebb3ad9339.png"
+                      alt="Router Cutting Image"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <select class="form-control" name="router_cut">
+                      <option value="">-Please Select-</option>
+                      <option value="0">none</option>
+                      <option value="2">2-Sided</option>
+                      <option value="3">3-sided</option>
+                      <option value="4">4-sided</option>
+                      <option value="5">5-sided</option>
+                      <option value="6">6-sided</option>
+                      <option value="7">7 pages</option>
+                      <option value="8">8-panel</option>
+                      <option value="9">9 pages</option>
+                      <option value="10">10 pages</option>
+                      <option value="11">11 pages</option>
+                      <option value="12">12 pages</option>
+                      <option value="13">13 pages</option>
+                      <option value="14">14 pages</option>
+                      <option value="15">15 pages</option>
+                      <option value="16">16 pages</option>
+                      <option value="17">17 pages</option>
+                      <option value="18">18 pages</option>
+                      <option value="19">19 pages</option>
+                      <option value="20">20 pages</option>
+                      <option value="21">21 pages</option>
+                      <option value="22">22 pages</option>
+                      <option value="23">23 pages</option>
+                      <option value="24">24 pages</option>
+                      <option value="25">25 pages</option>
+                      <option value="26">26 pages</option>
+                      <option value="27">27 pages</option>
+                      <option value="28">28 pages</option>
+                      <option value="29">29 pages</option>
+                      <option value="30">30 pages</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <select class="form-control" name="router_cut_kind">
+                      <option value="">-Please Select-</option>
+                      <option value="1">1 type</option>
+                      <option value="2">2 types</option>
+                      <option value="3">3 types</option>
+                      <option value="4">4 types</option>
+                      <option value="5">5 types</option>
+                      <option value="6">6 types</option>
+                      <option value="7">7 types</option>
+                      <option value="8">8 types</option>
+                      <option value="9">9 types</option>
+                      <option value="10">10 types</option>
+                      <option value="11">11 species</option>
+                      <option value="12">12 species</option>
+                      <option value="13">13 species</option>
+                      <option value="14">14 species</option>
+                      <option value="15">15 species</option>
+                      <option value="16">16 types</option>
+                      <option value="17">17 species</option>
+                      <option value="18">18 species</option>
+                      <option value="19">19 species</option>
+                      <option value="20">20 species</option>
+                      <option value="21">21 species</option>
+                      <option value="22">22 species</option>
+                      <option value="23">23 species</option>
+                      <option value="24">24 species</option>
+                      <option value="25">25 species</option>
+                      <option value="26">26 species</option>
+                      <option value="27">27 species</option>
+                      <option value="28">28 species</option>
+                      <option value="29">29 species</option>
+                      <option value="30">30 species</option>
+                    </select>
+                  </div>
+                  <div id="router_cut_kind_error" class="inline-error"></div>
+
+                </div>
+
+                <!-- Perforation Imposition -->
+                <div class="row align-items-start mb-3 serviceM">
+                  <div class="col-md-2">Perforation Imposition</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/roulette-e512e1fb54dc9931b4c8b77b1b133725.png"
+                      alt="Perforation Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="0" id="perforation-0">
+                        <span class="radio-button-custom">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="1" id="perforation-1">
+                        <span class="radio-button-custom">2 to 5 Panels</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="2" id="perforation-2">
+                        <span class="radio-button-custom">6 to 10 Pages</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="3" id="perforation-3">
+                        <span class="radio-button-custom">11 to 15 Pages</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="4" id="perforation-4">
+                        <span class="radio-button-custom">16 to 20 Pages</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="5" id="perforation-5">
+                        <span class="radio-button-custom">21 to 25 Pages</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="perforation" value="6" id="perforation-6">
+                        <span class="radio-button-custom">26 to 30 Pages</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Data Imposition Editing Service -->
+                <div class="row align-items-start mb-3 serviceM">
+                  <div class="col-md-2">Data Imposition Editing Service</div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                    <select name="data_service" class="form-control">
+                      <option value="">-Please Select-</option>
+                      <option value="0">none</option>
+                      <option value="1">Same type of imposition</option>
+                      <option value="2">Type 2 imposition</option>
+                      <option value="3">Three types of imposition</option>
+                      <option value="4">4 types of imposition</option>
+                      <option value="5">5 types of imposition</option>
+                      <option value="6">6 types of imposition</option>
+                      <option value="7">7 types of imposition</option>
+                      <option value="8">8 types of imposition</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-9 serviceM">
+          <div class="card-header">
+            <h3>Special Processing</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">End Face Through Hole</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/semiTh-252ff32205ba678a24af8f6776f27030.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="semi_th" value="0" id="semi_th_0">
+                        <span class="radio-button-custom" for="semi_th">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="semi_th" value="1" id="semi_th_1">
+                        <span class="radio-button-custom" for="semi_th">Yes</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start">
+                  <div class="col-md-2">Slot</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/longHole-feb39773342cb1692a933ace19a82052.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="long_hole" value="0" id="long_hole_0">
+                        <span class="radio-button-custom" for="semi_th_0">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="long_hole" value="1" id="long_hole_1">
+                        <span class="radio-button-custom" for="semi_th_1">Yes</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start">
+                  <div class="col-md-2">Pad on Via</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/padOnVia-f86f3f2d8bf2c724354c1dcadd6b5bfd.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="pad_on_via" value="0" id="pad_on_via_0">
+                        <span class="radio-button-custom" for="pad_on_via">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="pad_on_via" value="1" id="pad_on_via_1">
+                        <span class="radio-button-custom" for="pad_on_via">Yes</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start">
+                  <div class="col-md-2">Pads less than 0.3mm</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0924/5730/4373/files/Flash-PCB__01_img06.png?v=1742999689"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="pad_less_03" value="0" id="pad_less_03_0">
+                        <span class="radio-button-custom" for="pad_less_03">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="pad_less_03" value="1" id="pad_less_03_1">
+                        <span class="radio-button-custom" for="pad_less_03">Yes</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-10 serviceM">
+          <div class="card-header">
+            <h3>Standard</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">UL Mark</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/ulMark-3e7719caffbfb51ba01dc1592a4cce30.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="ul_mark" value="0" id="ul_mark_0">
+                        <span class="radio-button-custom" for="ul_mark_0">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="ul_mark" value="1" id="ul_mark_1">
+                        <span class="radio-button-custom" for="ul_mark_1">Yes (with position specification)</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="ul_mark" value="2" id="ul_mark_2">
+                        <span class="radio-button-custom" for="ul_mark_2">Yes (no position specified)</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-11 both">
+          <div class="card-header">
+            <h3>Inspection</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start serviceM">
+                  <div class="col-md-2">AOI inspection (optical appearance inspection)</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="aoi_inspection" value="0" id="aoi_inspection_0">
+                        <span class="radio-button-custom" for="aoi_inspection_0">None</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="aoi_inspection" value="1" id="aoi_inspection_1">
+                        <span class="radio-button-custom" for="aoi_inspection_1">Can be</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start serviceM">
+                  <div class="col-md-2">Manufacturing Inspection Report</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="manufact_inspection_certificate"
+                          value="0"
+                          id="manufact_inspection_certificate_0"
+                        >
+                        <span class="radio-button-custom" for="manufact_inspection_certificate_0">Not Issued</span>
+                      </label>
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="manufact_inspection_certificate"
+                          value="1"
+                          id="manufact_inspection_certificate_1"
+                        >
+                        <span class="radio-button-custom" for="manufact_inspection_certificate_1">Issued</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row align-items-start serviceG">
+                  <div class="col-md-2">Mounting inspection report</div>
+                  <div class="col-md-1"></div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="mount_inspection_certificate"
+                          value="0"
+                          id="mount_inspection_certificate_0"
+                        >
+                        <span class="radio-button-custom" for="mount_inspection_certificate_0">Not Issued</span>
+                      </label>
+                      <label class="radio-button">
+                        <input
+                          type="radio"
+                          name="mount_inspection_certificate"
+                          value="1"
+                          id="mount_inspection_certificate_1"
+                        >
+                        <span class="radio-button-custom" for="mount_inspection_certificate_1">Issued</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-12 serviceM">
+          <div class="card-header">
+            <h3>Data Format, Etc.</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Data Format</div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-8">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="dxf_data" value="0" id="dxf_data_0">
+                        <span class="radio-button-custom" for="dxf_data_0">Gerber Data</span>
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="dxf_data" value="1" id="dxf_data_1">
+                        <span class="radio-button-custom" for="dxf_data_1">DXF Data</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-start">
+                  <div class="col-md-2">Design CAD</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/manuOptPlanCad-e1608fbe4a51bf29eac78a133af57af2.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col-3">
+                    <select name="cad" class="form-control">
+                      <option value="">-Please Select-</option>
+                      <option value="0">Not specified</option>
+                      <option value="1">Allegro</option>
+                      <option value="2">Altium Designer (Protel)</option>
+                      <option value="3">CADLUS X</option>
+                      <option value="17">CADLUS ONE</option>
+                      <option value="4">CADVANCE</option>
+                      <option value="5">CR-5000</option>
+                      <option value="6">DESIGNSPARK PCB</option>
+                      <option value="7">Eagle</option>
+                      <option value="8">K2CAD</option>
+                      <option value="9">K4</option>
+                      <option value="10">Mentor</option>
+                      <option value="11">MY-PCB</option>
+                      <option value="12">OrCAD</option>
+                      <option value="13">PADS</option>
+                      <option value="14">PCBE</option>
+                      <option value="15">WIN PCB</option>
+                      <option value="18">Quadcept</option>
+                      <option value="16">others</option>
+                    </select>
+                  </div>
+                  <div id="ManuOptBoardThickness_error" class="inline-error"></div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+
+        <div class="card mt-2 section-13 serviceM">
+          <div class="card-header">
+            <h3>Factory Designated</h3>
+          </div>
+          <div class="card-body">
+            <fieldset>
+              <div class="container text-left">
+                <div class="row align-items-start">
+                  <div class="col-md-2">Factory Designated</div>
+                  <div class="col-md-1">
+                    <img
+                      src="https://www.p-ban.com/kiban/_next/static/images/estManuFactoryId-c87bca172d3eb2194c24e300dec20164.png"
+                      alt="Pattern Image"
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="radio-button-group">
+                      <label class="radio-button">
+                        <input type="radio" name="factory_id" value="0" id="factory_id_0">
+                        <span class="radio-button-custom" for="factory_id_0">None</span>
+                      </label>
+
+                      <label class="radio-button">
+                        <input type="radio" name="factory_id" value="104" id="factory_id_104">
+                        <span class="radio-button-custom" for="factory_id_104">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/korea-1babd230bee1dcb7cc83481aa49335e0.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          South Korea</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="factory_id" value="105" id="factory_id_105">
+                        <span class="radio-button-custom" for="factory_id_105">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/taiwan-d96ed2a3881c43fe293aa7fcd17837b6.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Taiwan</span
+                        >
+                      </label>
+                      <label class="radio-button">
+                        <input type="radio" name="factory_id" value="131" id="factory_id_131">
+                        <span class="radio-button-custom" for="factory_id_131">
+                          <img
+                            src="https://www.p-ban.com/kiban/_next/static/images/japan-1219c132ec1be3a7491c8540f826c325.png"
+                            alt=""
+                            loading="lazy"
+                          >
+                          Japan</span
+                        >
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="grey-out">&nbsp;</div>
+        </div>
+        <div class="button-container">
+          <div class="error-message"></div>
+          <button class="btn btn-success btn-sm" id="btn-save-estimation" type="submit">Request for Quote →</button>
+        </div>
+
+        <!-- n -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="loginModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Customer Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors }}
+          <div class="mb-3 row">
+            <div class="col-sm-10">
+              <p>Please enter your email address (or user ID) and password to log in.</p>
+              <p>
+                If you do not have an account,please
+                <a href="{{ routes.account_register_url }}"> {{ 'customer.login_page.create_account' | t }}</a> here.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" name="customer[email]" class="form-control" id="customer_email" value="" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" name="customer[password]" class="form-control" id="customer_password" required>
+              <input name="return_to" type="hidden" value="/pages/1-click-board-order">
+            </div>
+          </div>
+
+          <a href="#recover">
+            {{ 'customer.login_page.forgot_password' | t }}
+          </a>
+
+          <div class="submit" style="text-align:center;">
+            <input type="submit" class="btn btn-primary" value="Sign in">
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+  async
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+  crossorigin="anonymous"
+  async
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+  integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+  crossorigin="anonymous"
+  async
+></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+></script>
+
+<script>
+  function updateServiceVisibility(serviceClass, radioButtonId) {
+    const serviceElements = document.getElementsByClassName(serviceClass);
+    const showRadio = document.getElementById(radioButtonId);
+
+    Array.from(serviceElements).forEach((el) => {
+      el.style.display = showRadio.checked ? '' : 'none';
+    });
+
+    const serviceMChecked = document.getElementById('serviceM').checked;
+    const serviceGChecked = document.getElementById('serviceG').checked;
+
+    if ($('#serviceM').is(':checked') || $('#serviceG').is(':checked')) {
+      jQuery('#btn-save-estimation').attr('disabled', false);
+      $('.error').hide();
+    } else {
+      $('.both').hide();
+      $('.error').show();
+      jQuery('#btn-save-estimation').attr('disabled', true);
+    }
+  }
+
+  // Event listeners
+  document.getElementById('serviceG').addEventListener('change', () => updateServiceVisibility('serviceG', 'serviceG'));
+  document.getElementById('serviceM').addEventListener('change', () => updateServiceVisibility('serviceM', 'serviceM'));
+
+  // Initial visibility updates
+  updateServiceVisibility('serviceG', 'serviceG');
+  updateServiceVisibility('serviceM', 'serviceM');
+</script>
+
+<script>
+  function submitFormData(formElement) {
+    const formData = new FormData(formElement);
+    const formObject = {};
+    formData.forEach((value, key) => {
+      formObject[key] = value;
+    });
+    formObject['customerId'] = '{{ customer.id }}';
+
+    if($('#serviceG').is(':checked') && !$('#serviceM').is(':checked')){
+      formObject['aoi_inspection']=null;
+      formObject['beaten_thickness']=null;
+      formObject['board']=null;
+      formObject['board_thickness']=null;
+      formObject['build_up_method']=null;
+      formObject['chamfering_process']=null;
+      formObject['data_service']=null;
+      formObject['dip_cnt']=null;
+      formObject['dxf_data']=null;
+      formObject['impedance']=null;
+      formObject['jumpvcut_cnt']=null;
+      formObject['laser_via']=null;
+      formObject['local_storage_mapkey']=null;
+      formObject['long_hole']=null;
+      formObject['manu_opt_plan_cad']=null;
+      formObject['manufacture_Inspection_certificate']=null;
+      formObject['min_hole_land']=null;
+      formObject['org_spec_summary_order_no']=null;
+      formObject['min_ls']=null;
+      formObject['other_silk']=null;
+      formObject['pad_less_03']=null;
+      formObject['pad_on_via']=null;
+      formObject['parts_height_limit']=null;
+      formObject['parts_height_limit']=null;
+      formObject['resist_color']=null;
+      formObject['rf_contact_portion_1']=null;
+      formObject['rf_contact_portion_bonding_1']=null;
+      formObject['rf_contact_portion_bonding_2']=null;
+      formObject['rf_contact_portion_cnt']=null;
+      formObject['roulette']=null;
+      formObject['roulette_kind']=null;
+      formObject['router_cut']=null;
+      formObject['router_cut_kind']=null;
+      formObject['semi_th']=null;
+      formObject['silk']=null;
+      formObject['silk_color']=null;
+      formObject['silk_print_method']=null;
+      formObject['surface_finishing']=null;
+      formObject['ul_mark']=null;
+      formObject['vcut_cnt']=null;
+    }else if(!$('#serviceG').is(':checked') && $('#serviceM').is(':checked')){
+        formObject['freeMaterialsFlg']=null;
+    }
+    
+    if(formObject.serviceD==undefined){
+      formObject['serviceD'] = '0';
+    }
+    if(formObject.serviceG==undefined){
+      formObject['serviceD'] = '0';
+    }
+   
+ 
+    $("#btn-save-estimation").prop('disabled', true);
+    $("#btn-save-estimation").html('saving...')
+    fetch(appURL + '/api/draft-orders', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'bypass-tunnel-reminder': '104.181.194.237',
+        'User-Agent': 'MyCustomUserAgent/1.0',
+        'ngrok-skip-browser-warning': 'anyvalue',
+      },
+      body: JSON.stringify(formObject),
+    })
+      .then((response) => {
+        $("#btn-save-estimation").prop('disabled', false);
+        $("#btn-save-estimation").html('Save and Order →')
+        return response.json().then((data) => {
+          return { status: response.status, data };
+        });
+      })
+      .then(({ status, data }) => {
+        if (status === 400) {
+          if (data.errors) {
+            document.querySelectorAll('.inline-error').forEach(el => {
+              el.style.display = 'none';
+              el.innerHTML = '';
+          });
+            let errorMessages = '<h2 class="inline-error inline-error-title">Please fix the following errors:</h2><ul>';
+            let firstElement="";
+            for (const [key, value] of Object.entries(data.errors)) {
+              console.log(value,"value")
+              const object_value = value?.split(":");
+              const labelPreFix = object_value[0];
+              errorMessages += `<li style="font-size:12px;" class="uppercase">${value.replace(":",": ").replaceAll("_"," ")}</li>`;
+
+              const errorElement = document.getElementById(labelPreFix + "_error");
+              if (errorElement) {
+                if(firstElement==""){
+                  firstElement=errorElement;
+                }
+                
+                  errorElement.innerHTML =object_value[1];
+                  errorElement.style.display = "block"; // Make it visible
+              } else {
+                  console.error("Element not found:", labelPreFix + "_error");
+              }
+            }
+            errorMessages += '</ul>';
+            document.querySelectorAll('.messagebar').forEach(function (element) {
+              element.innerHTML = errorMessages;
+            });
+
+            if (firstElement) {
+              window.scrollTo({
+                top: firstElement.getBoundingClientRect().top + window.scrollY - 150, // Scroll 50px above
+                behavior: 'smooth'
+              });
+            }
+          }
+        } else if (status === 200) {
+          if (data.shopifyOrderId) {
+            const orderStatusURL = `/pages/estimation-detail?id=${data.shopifyOrderId}&step=2`;
+            window.location.href = orderStatusURL;
+          }
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
+  // Handle form submission
+  document.getElementById('pcb_calculator').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const customerId = '{{ customer.id }}';
+    const myModal = new bootstrap.Modal('#loginModal', {
+      keyboard: false,
+    });
+
+    // Check if the user is logged in
+    if (!customerId || customerId === '') {
+      const formData = new FormData(this);
+      const formObject = {};
+      formData.forEach((value, key) => {
+        formObject[key] = value;
+      });
+      localStorage.setItem('formData', JSON.stringify(formObject));
+      myModal.show();
+      return false;
+    }
+    submitFormData(this);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const formElement = document.getElementById('pcb_calculator');
+    const savedFormData = localStorage.getItem('formData');
+
+    if (savedFormData) {
+      const formObject = JSON.parse(savedFormData);
+
+      // Fill form fields with saved data
+      for (const [key, value] of Object.entries(formObject)) {
+        const inputElement = formElement.querySelector(`[name="${key}"]`);
+
+        if (inputElement) {
+          inputElement.value = value;
+        }
+      }
+      document.querySelectorAll(".grey-out").forEach((element) => {
+        element.style.display = "none";
+      });
+      localStorage.removeItem('formData');
+      // Automatically submit the form after login
+      //submitFormData(formElement);
+      // Clear form data from localStorage after submission
+      
+    }
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('.serviceD').hide();
+    $('.serviceG').hide();
+
+    $('#serviceG').change(function () {
+      if ($(this).is(':checked')) {
+        $('.serviceG').show();
+      } else {
+        $('.serviceG').hide();
+      }
+    });
+  
+    $('#serviceM').change(function () {
+      if ($(this).is(':checked')) {
+        $('.serviceM').show();
+      } else {
+        $('.serviceM').hide();
+      }
+    });
+  });
+
+  const defaultValuesServiceM = {
+    kiban_type: '1',
+    layer: '2',
+    board: '0',
+    board_thickness: '0.15',
+    alm_thickness: null,
+    beaten_thickness: '1',
+    build_up_method: null,
+    min_ls: '0.075',
+    min_hole_land: '0',
+    impedance: '0',
+    resist_print: '1',
+    resist_color: '0',
+    silk: '2',
+    silk_color: '0',
+    silk_print_method: '0',
+    surface_finishing: '0',
+    chamfering_process: '0',
+    router_cut: '0',
+    roulette: '0',
+    data_service: '0',
+    semi_th: '0',
+    long_hole: '0',
+    pad_on_via: '0',
+    pad_less_03: '0',
+    ul_mark: '0',
+    aoi_inspection: '0',
+    manufact_inspection_certificate: '0',
+    dxf_data: '0',
+    manu_opt_plan_cad: '0',
+    hard_gold_on_pci_edge_terminal: '0',
+    perforation: '0',
+    factory_id: '0',
+    mount_inspection_certificate: '0',
+  };
+  const $form = $('#pcb_calculator');
+  $.each(defaultValuesServiceM, function (key, value) {
+    const $inputElement = $form.find(`[name="${key}"]`);
+    if ($inputElement.length) {
+      if ($inputElement.is(':radio')) {
+        $inputElement.each(function () {
+          if ($(this).val() === value) {
+            $(this).prop('checked', true);
+          } else {
+            $(this).prop('checked', false); 
+          }
+        });
+      } else {
+        $inputElement.val(value);
+      }
+    }
+  });
+
+  const serviceBoxes = document.querySelectorAll('.service-child');
+  serviceBoxes.forEach((serviceBox) => {
+    const checkbox = serviceBox.querySelector('input[type="checkbox"]');
+    if (checkbox) {
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          serviceBox.classList.add('checked');
+        } else {
+          serviceBox.classList.remove('checked');
+        }
+      });
+    }
+  });
+
+  document.querySelectorAll('#pcb_calculator input').forEach((input) => {
+    input.addEventListener('input', handleInputChange);
+  });
+  function handleInputChange() {
+    const form = document.getElementById('pcb_calculator');
+    const formData = new FormData(form);
+    const layerValue = formData.get('layer');
+    const rogersMaterial = formData.get('board');
+    const size_x = formData.get('size_x')
+    const size_y = formData.get('size_y')
+    const board = formData.get('board')
+    
+    console.log(board, "Exteranal board")
+
+
+    document.getElementById('patternSide-container').style.display = layerValue === '1' ? '' : 'none';
+
+    const rogersElements = document.querySelectorAll('.rogers-only');
+    rogersElements.forEach((element) => {
+      element.style.display = rogersMaterial === '7' ? '' : 'none';
+    });
+    
+    if (size_x >= 1 && size_y>=1) {
+      document.querySelectorAll(".grey-out").forEach((element) => {
+          element.style.display = "none";
+      });
+    }else{
+      document.querySelectorAll(".grey-out").forEach((element) => {
+        element.style.display = "block";
+      });
+    }
+    const radioButtons = document.querySelectorAll('input[name="board_thickness"]');
+    if (board == 2) {
+      radioButtons.forEach((radio) => {
+          if (!["1.0", "1.6"].includes(radio.value)) {
+              const parentLabel = radio.closest('label'); // Select the closest label
+              if (parentLabel) {
+                  parentLabel.style.display = "none"; // Hide the label
+              }
+          }
+      });
+    }else{
+      radioButtons.forEach((radio) => {
+
+            const parentLabel = radio.closest('label'); // Select the closest label
+            if (parentLabel) {
+                parentLabel.style.display = "flex"; // Hide the label
+            }
+
+    });
+    }
+  }
+</script>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": []
+}
+{% endschema %}
